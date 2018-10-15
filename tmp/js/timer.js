@@ -97,7 +97,6 @@ function initiateStudy(){
 
 //increase the timer every second until 5 minutes
 function initiateBreak(){
-    activeTimerType = "break"
     clearInterval(studyTimer)
     
     // memory.minutes = 0
@@ -129,14 +128,27 @@ document.addEventListener("timer_end", ()=>{
     memory.minutes = 0
     memory.seconds = 0
     playSound()
+    let modaltext = document.getElementById("modal-notification")
+    if(memory.timerType === "study"){
+        modaltext.innerText = "It's time to take a break"
+    }else{
+        modaltext.innerText = "It's timer to study"
+    }
     let modal = document.getElementById("myModal")
     modal.style.display = "block";
     let modalbutton = document.getElementsByClassName("close")[0]
     modalbutton.onclick = ()=>{modal.style.display = "none"}
+
+    if(memory.timerType === "break"){
+        memory.timerType = "study"
+    }else{
+        memory.timerType = "break"
+    }
     if(round>3){
         console.log(round)
-        return clearInterval(studyTimer)
+        clearInterval(studyTimer)
     }
+    memory.timerStatus = 0
     button.innerHTML = "START"
     button.setAttribute("mode","start")
     // if(activeTimerType ==="study"){
