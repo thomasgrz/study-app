@@ -5,13 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Study Timer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 </head>
 <body>
+    <div class="myModal" id="myModal">
+        <div class="modal-content">
+            <p>It is time to take a break!</p>
+            <button class="close">CLOSE</button>
+        </div>
+    </div>
     <div class="container">
         <section id="top">
             <div id="title">
-                <h1>Pomodoro!</h1>
+                <h1>POMODORO</h1>
             </div>
             <section id="task-tracker">
                 <h3>Completed Tasks: </h3>
@@ -20,10 +27,12 @@
                 <span id="total-tasks"></span>
             </section>
             <div id="timer">
-                <span id="minutes">0</span>
-                <span id="colon">:</span>
-                <span id="seconds">0</span>
-                <button id="button" type="button">START</button>
+                <section id="numbers">
+                    <span id="minutes">00</span>
+                    <span id="colon">:</span>
+                    <span id="seconds">00</span>
+                </section>
+                <button id="button" type="button">BEGIN</button>
             </div>
             <div id="tomatoes">
 

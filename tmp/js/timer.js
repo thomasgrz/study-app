@@ -3,12 +3,24 @@
 const button = document.getElementById("button")
 button.setAttribute("onclick","toggle()")
 
+function playSound(){
+    let audio = new Audio("notification.wav")
+    audio.play();
+}
+
+//create a custom event to alert when the timer expires
 let timer_end = new CustomEvent("timer_end")
+
+//variables to hold the setInterval references 
 let fiveminutebreak, studyTimer
+
 //create memory of the timer cycles
 let round = 0
+
+//keep track of what timer is running
 let activeTimerType = "study"
-//grab the timer elements
+
+//grab the timer elements from the DOM
 let minutes = document.getElementById("minutes")
 let seconds = document.getElementById("seconds")
 
@@ -17,53 +29,64 @@ let seconds = document.getElementById("seconds")
 let memory  = {
     minutes: 0,
     seconds: 0,
-    timerType: "",
+    timerType: "study",
     timerStatus: 0 //0 = timer off, 1 = timer on
 }
-
-//set up counters for each respective timer element
-let minuteHand = 1
-let secondHand = 1
-
-//toggle logic==================
-
+//toggle timer button logic
 function toggle(){
     debugger
     //get the mode attribute of the start/stop button
     let mode = memory.timerStatus
+    //if the timer is off when pressed
     if(!mode){
+        //set the timer status to active
         memory.timerStatus = 1
-
-        button.innerHTML = "STOP"
-        return initiateStudy()
+        //make the button read as STOP
+        button.innerHTML = "PAUSE"
+        button.setAttribute("mode","pause")
+        //if the active timer type is study
+        if(memory.timerType === "study"){
+            //start the timer (again)
+            return initiateStudy()
+        }else{
+            //start the break timer (again)
+            return initiateBreak()
+        }
     }else{
-        memory.timerStatus = 0
-        memory.minutes = JSON.parse(minuteHand.innerText)
-        memory.seconds = JSON.parse(secondHand.inerText)
         button.innerHTML = "START"
-        return clearInterval(studyTimer)
+        button.setAttribute("mode","start")
+        //if the timer is on when pressed
+        memory.timerStatus = 0
+        if(memory.timerType === "study"){
+            //stop the study timer
+            clearInterval(studyTimer)
+        }else{
+            //stop the break  timer
+            clearInterval(fiveminutebreak)
+        }
     }
 }
 
 //increase the timer every second until 25 minutes
 function initiateStudy(){
-    debugger
-    minuteHand = memory.minutes
-    minutes.innerHTML = minuteHand
+    // memory.minutes = 0
+    // memory.seconds = 0
+    memory.minutes = memory.minutes
+    minutes.innerHTML = memory.minutes
     studyTimer = setInterval(()=>{
         activeTimerType = "study"
-        if(minuteHand<25){
-            if(secondHand == 60){
-                secondHand = 0
-                minuteHand++
-                minutes.innerHTML = minuteHand
+        if(memory.minutes<25){
+            if(memory.seconds == 60){
+                memory.seconds = 0
+                memory.minutes++
+                minutes.innerHTML = memory.minutes
             }
-            if(secondHand<10){
-                seconds.innerHTML = '0' + secondHand
+            if(memory.seconds<10){
+                seconds.innerHTML = '0' + memory.seconds
             }else{
-                seconds.innerHTML = secondHand
+                seconds.innerHTML = memory.seconds
             }
-            secondHand++
+            memory.seconds++
         }else{
             clearInterval(studyTimer)
             document.dispatchEvent(add_tomato)
@@ -77,22 +100,23 @@ function initiateBreak(){
     activeTimerType = "break"
     clearInterval(studyTimer)
     
-    minuteHand = 0
-    minutes.innerHTML = minuteHand
-    secondHand = 0
+    // memory.minutes = 0
+    // memory.seconds = 0
+    seconds.innerHTML = memory.seconds
+    minutes.innerHTML = memory.minutes
     fiveminutebreak = setInterval(()=>{
-        if(minuteHand<5){
-            if(secondHand == 60){
-                secondHand = 0
-                minuteHand++
-                minutes.innerHTML = minuteHand
+        if(memory.minutes<5){
+            if(memory.seconds == 60){
+                memory.seconds = 0
+                memory.minutes++
+                minutes.innerHTML = memory.minutes
             }
-            if(secondHand<10){
-                seconds.innerHTML = '0' + secondHand
+            if(memory.seconds<10){
+                seconds.innerHTML = '0' + memory.seconds
             }else{
-                seconds.innerHTML = secondHand
+                seconds.innerHTML = memory.seconds
             }
-            secondHand++
+            memory.seconds++
         }else{
             clearInterval(fiveminutebreak)
             document.dispatchEvent(timer_end)
@@ -100,23 +124,50 @@ function initiateBreak(){
     },5)
 } 
 
-//stop time when toggle is pressed
-// toggle.addEventListener("click",()=>{
-//     clearInterval(studyTimer)
-// })
-//update round when timer ends and initiate break time
 document.addEventListener("timer_end", ()=>{
     debugger
-    console.log(round)
+    memory.minutes = 0
+    memory.seconds = 0
+    playSound()
+    let modal = document.getElementById("myModal")
+    modal.style.display = "block";
+    let modalbutton = document.getElementsByClassName("close")[0]
+    modalbutton.onclick = ()=>{modal.style.display = "none"}
     if(round>3){
-        return clearInterval(initiateStudy)
+        console.log(round)
+        return clearInterval(studyTimer)
     }
     if(activeTimerType ==="study"){
         round++
+        console.log(round)
         return initiateBreak()
     }else{
         return initiateStudy()
     }
 })
 
+//considering making timer into a class to be substantiated 
+//whenever a timer is needed 
+//this could be handed customized length durations
+// class Timer{
+//     constructor(studyLength, breakLength){
+//         this.memory = {
+//             studyLength,
+//             breakLength,
+//             minutes:studyLength,
+//             seconds: 0,
+//             round: 0,
+//             activeTimer: studyLength
+//         }
+//         this.interval = setInterval((activeTimer)=>{
 
+//         },100)
+//     }
+//     start = function(){
+
+//     }
+
+//     stop = function(){
+        
+//     }
+// }

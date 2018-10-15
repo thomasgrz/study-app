@@ -1,6 +1,7 @@
 /* set up body */
 body{
     background-color:#333;
+    font-family: 'Roboto','sans-serif';
 }
 
 /* target the top pomodor app*/
@@ -17,10 +18,7 @@ body{
     text-align: center;
 
 }
-#colon{
-    font-size:2em;
-    text-align:center;
-}
+
 
 /* target entire upper module*/
 #top{
@@ -46,19 +44,37 @@ body{
 img{
     width:50px;
 }
+#task-tracker h3{
+    display:inline;
 
-
-/*  minutes, seconds, start button */
-#timer{
-    display:flex;
-    align-items:stretch;
-    flex-direction:row;
-    justify-content: space-around;
-    flex-grow:1; 
-    margin:auto;
 }
 
+/*  minutes, seconds, start button */
+div #timer{
+    margin:auto;
+    font-size:5em;
+}
+div#timer button{
+    background-color:white;
+    height:30px;
+    border-radius: 4px;
+    font-weight:900;
+}
+div#timer button[mode=start]{
+    background:green;
+    color:white;
+    font-weight:900;
+} 
+div#timer button[mode=pause]{
+    background:coral;
+    color:white;
+    font-weight: 900;
+}
 
+section #numbers{
+    box-sizing:content-box;
+    margin:auto;
+}
 /* both lists*/
 #lists{
     display:flex;
@@ -74,13 +90,14 @@ ul{
 #todo-container{
     width:50%;
     padding-left:10px;
-
 }
 
-button{
-    background-color:white;
+div#todo-container input{
+    margin-bottom:5px;
 }
-
+div#todo-container button{
+    float:right;
+}
 /*done list */
 #done-tasks{
     width:50%;
@@ -94,6 +111,7 @@ li[iscomplete=true] span{
     padding-right:10px;
     border-radius:5px;
     display:inline;
+    margin:0,0,0,7px;
 }
 
 /* footer */
@@ -102,4 +120,25 @@ footer{
     position:fixed;
     left:0;
     bottom:0;
+}
+
+/* my modal */
+div#myModal {
+    display:none;
+    position: fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0,.4)
+}
+
+div#myModal .modal-content{
+    background-color:#fefefe;
+    margin:10% auto;
+    width:80%;
+    padding:20px;
+    max-width:600px;
+    border-radius: 4px;
+    text-align:center;
 }
