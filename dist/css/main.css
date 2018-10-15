@@ -1,0 +1,27 @@
+body{
+    background-color:#333;
+}
+.container{
+    max-width:600px;
+    margin: auto;
+    background-color:#DCDBDB;
+    height:100%;
+    border-radius:4px;
+}
+
+.container h1{
+    margin: 5px auto;
+    text-align: center;
+}
+#colon{
+    font-size:2em;
+    text-align:center;
+}
+#timer{
+    display:flex;
+    align-items:stretch;
+    flex-direction:row;
+    justify-content: space-around;
+    flex-grow:1; 
+    margin:auto;
+}
