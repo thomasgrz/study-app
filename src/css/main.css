@@ -95,8 +95,11 @@ ul{
 div#todo-container input{
     margin-bottom:5px;
 }
-div#todo-container button{
+/* div#todo-container button{
     float:right;
+} */
+#todo-list li:hover{
+    text-decoration: line-through;
 }
 /*done list */
 #done-tasks{

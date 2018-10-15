@@ -137,13 +137,15 @@ document.addEventListener("timer_end", ()=>{
         console.log(round)
         return clearInterval(studyTimer)
     }
-    if(activeTimerType ==="study"){
-        round++
-        console.log(round)
-        return initiateBreak()
-    }else{
-        return initiateStudy()
-    }
+    button.innerHTML = "START"
+    button.setAttribute("mode","start")
+    // if(activeTimerType ==="study"){
+    //     round++
+    //     console.log(round)
+    //     return initiateBreak()
+    // }else{
+    //     return initiateStudy()
+    // }
 })
 
 //considering making timer into a class to be substantiated 
