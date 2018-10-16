@@ -198,6 +198,14 @@ div#myModal .modal-content{
     border-radius: 4px;
     text-align:center;
 }
+div#myModal span{
+    font-size:2em;
+}
+div#myModal span:hover{
+    font-size:2em;
+    color:#ff6666;
+    cursor:pointer;
+}
 div#about-modal{
     display:none;
     position: fixed;
@@ -230,4 +238,25 @@ span[role="button"]{
 span[role="button"]:hover{
     cursor:pointer;
     color:#ff6666;
+}
+
+div#save-modal{
+    display:none;
+    position: fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0, 0, 0, 0.651)
+}
+
+div#save-modal .inner-save-modal{
+    background-color:#fefefe;
+    margin:3% auto;
+    width:80%;
+    padding:0px 20px 10px 20px;
+    max-width:400px;
+    border-radius: 4px;
+    text-align:center;
+
 }

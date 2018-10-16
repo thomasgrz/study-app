@@ -1,4 +1,7 @@
 
+//grab the elements of the list forms 
+//to be able to respond to new task creation
+//as well as task comppletion
 let form = document.getElementById("todo-form")
 let input = document.getElementById("new-task")
 let ul = document.getElementById("todo-list")

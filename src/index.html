@@ -24,10 +24,21 @@
             <p>Continue until you've accumulated four pomodoro tomatoes!</p>
         </div>
     </div>
+    <div class="myModal" id="save-modal">
+            <div class="inner-save-modal">
+                <span id="close-save-modal" role="button">&times;</span>
+                <h3>SAVE:</h3>
+                <h4>Would you like to save the current completed session?</h4>
+                <p>You have completed these tasks:</p>
+                <ul>
+
+                </ul>
+            </div>
+        </div>
     <div class="myModal" id="myModal">
         <div class="modal-content">
             <p id="modal-notification"></p>
-            <button class="close">CLOSE</button>
+            <span class="close">&times;</span>
         </div>
     </div>
     <div class="container">
@@ -39,7 +50,7 @@
             <nav>
                     <ul>
                         <li><a class="about-modal-button" href="#">ABOUT</a></li>
-                        <li><a href="#">SAVE</a></li>
+                        <li><a class="save-modal-button" href="#">SAVE</a></li>
                     </ul>
             </nav>
             <section id="task-tracker">

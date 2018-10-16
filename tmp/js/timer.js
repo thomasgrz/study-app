@@ -1,9 +1,4 @@
-//about modal clicks
-function About(){
-    debugger
-    let about = document.getElementById("about-modal")
-    about.style.display = "block"
-}
+
 //create a start stop button with a changing
 //mode attribute
 const button = document.getElementById("button")
@@ -41,7 +36,7 @@ let memory  = {
 //toggle timer button logic
 function toggle(){
     
-    debugger
+    
     //get the mode attribute of the start/stop button
     let mode = memory.timerStatus
     //if the timer is off when pressed
@@ -86,7 +81,7 @@ function initiateStudy(){
     minutes.innerHTML = memory.minutes
     studyTimer = setInterval(()=>{
     if(memory.minutes==0&&memory.seconds==0){
-        debugger
+        
         seconds.innerHTML = '0' + memory.seconds
         document.dispatchEvent(add_tomato)
         document.dispatchEvent(timer_end)
@@ -131,7 +126,7 @@ function initiateBreak(){
 } 
 
 document.addEventListener("timer_end", ()=>{
-    debugger
+    
     playSound()
     let modaltext = document.getElementById("modal-notification")
     if(memory.timerType === "study"){
