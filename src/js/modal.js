@@ -37,12 +37,12 @@ function save(){
     let elements_to_save = document.getElementById("done-list").children
     console.log(elements_to_save.children)
 
-    let inner_save = document.getElementsByClassName("inner-save-modal")[0]
+    let to_save_list = document.getElementById("tasks-to-save")
     
     // inner_save.appendChild(elements_to_save)
     for(let i=0;i<elements_to_save.length;i++){
         let element = elements_to_save[i].cloneNode(true)
-        inner_save.appendChild(element)
+        to_save_list.appendChild(element)
     }
 }
 

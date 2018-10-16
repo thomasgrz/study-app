@@ -31,20 +31,20 @@ let memory  = {
     timerStatus: 0 //0 = timer off, 1 = timer on
 }
 
+//show mode in DOM
+let status = document.getElementById("timer-mode")
+status.innerText = memory.timerType.toUpperCase()
+
 
 
 //toggle timer button logic
 function toggle(){
     
-    
     //get the mode attribute of the start/stop button
     let mode = memory.timerStatus
     //if the timer is off when pressed
     if(!mode){
-        //show mode in DOM
-        let status = document.getElementById("timer-mode")
-        status.innerText = memory.timerType.toUpperCase()
-        //set the timer status to active
+         //set the timer status to active
         memory.timerStatus = 1
         //make the button read as STOP
         button.innerHTML = "PAUSE"
@@ -126,7 +126,6 @@ function initiateBreak(){
 } 
 
 document.addEventListener("timer_end", ()=>{
-    
     playSound()
     let modaltext = document.getElementById("modal-notification")
     if(memory.timerType === "study"){
@@ -144,11 +143,20 @@ document.addEventListener("timer_end", ()=>{
         memory.timerType = "study"
         memory.minutes = 25
         memory.seconds = 0
+        minutes.innerText = memory.minutes
+        seconds.innerText = memory.seconds + '0'
+        status.innerText = memory.timerType.toUpperCase()
+
     }else{
         clearInterval(fiveminutebreak)
         memory.timerType = "break"
         memory.minutes = 5
         memory.seconds = 0
+        minutes.innerText = memory.minutes
+        seconds.innerText = memory.seconds + '0'
+        status.innerText = memory.timerType.toUpperCase()
+
+        
     }
     if(round>3){
         console.log(round)

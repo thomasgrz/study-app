@@ -5,8 +5,9 @@ body{
 }
 /* navigation bar*/
 nav{
+    display:block;
     height:1em;
-    padding-bottom:.5em;
+    padding-bottom:1em;
     text-align: center;
 }
 
@@ -18,7 +19,7 @@ nav ul{
 
 nav li{
     background-color:#CCCCFF;
-    display:inline;
+    display:inline-block;
     border-radius:5px;
     height:1em;
     padding:10px;
@@ -160,7 +161,7 @@ div#todo-container input{
     padding-left:10px;
 }
 
-li[iscomplete=true] span{
+div li[iscomplete=true] span{
     background-color:#ff6666;
     color:white;
     padding-left:10px;
@@ -168,6 +169,7 @@ li[iscomplete=true] span{
     border-radius:5px;
     display:inline;
     margin:0,0,0,7px;
+    list-style-type: none;
 }
 
 /* footer */
@@ -254,9 +256,23 @@ div#save-modal .inner-save-modal{
     background-color:#fefefe;
     margin:3% auto;
     width:80%;
-    padding:0px 20px 10px 20px;
+    padding:10px 20px 10px 20px;
     max-width:400px;
     border-radius: 4px;
     text-align:center;
 
+}
+
+@media screen and (max-width:360px){
+    div#mode-display{
+        display:block;
+        width:100%;
+    }
+    section#lists{
+        display:flex;
+        flex:1;
+        flex-direction:row;
+        flex-wrap:wrap;
+        width:100%;
+    }
 }
