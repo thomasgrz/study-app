@@ -3,7 +3,38 @@ body{
     background-color:#333;
     font-family: 'Roboto','sans-serif';
 }
+/* navigation bar*/
+nav{
+    height:1em;
+    padding-bottom:.5em;
+    text-align: center;
+}
 
+nav ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+
+nav li{
+    background-color:#CCCCFF;
+    display:inline;
+    border-radius:5px;
+    height:1em;
+    padding:10px;
+}
+nav li a:link{
+    text-decoration:none;
+    color:white;
+    padding:inherit;
+}
+nav li a:visited{
+    color:white;
+}
+nav li a:hover{
+    font-weight:900;
+    color:#ff6666;
+}
 /* target the top pomodor app*/
 .container{
     max-width:600px;
@@ -28,6 +59,9 @@ body{
     padding:5px;
 }
 
+#mode-display{
+    float:right;
+}
 /* title and tomatoes */
 #title{
     display:flex;
@@ -48,33 +82,51 @@ img{
     display:inline;
 
 }
+#timer-type{
+    float:right;
+}
+
 
 /*  minutes, seconds, start button */
-div #timer{
+div#timer{
+    display: block;
+    float:none;
+    box-sizing:content-box;
     margin:auto;
     font-size:5em;
 }
 div#timer button{
+    display:block;
+    margin:0 auto;
+    float:none;
     background-color:white;
     height:30px;
-    border-radius: 4px;
+    width: 50px;
+    height:50px;
+    border-radius:50%;
+    border:1px solid white;
     font-weight:900;
+    padding:2px;
+}
+div#timer button:focus{
+    outline:none;
 }
 div#timer button[mode=start]{
-    background:green;
+    background:rgb(103, 160, 103);
     color:white;
     font-weight:900;
 } 
 div#timer button[mode=pause]{
-    background:coral;
+    background:#ff6666;
     color:white;
     font-weight: 900;
 }
 
-section #numbers{
-    box-sizing:content-box;
-    margin:auto;
+section #numbers div{
+    text-align: center;
 }
+
+
 /* both lists*/
 #lists{
     display:flex;
@@ -134,7 +186,7 @@ div#myModal {
     top:0;
     width:100%;
     height:100%;
-    background-color:rgba(0,0,0,.4)
+    background-color:rgba(0, 0, 0, 0.651)
 }
 
 div#myModal .modal-content{
@@ -142,7 +194,40 @@ div#myModal .modal-content{
     margin:10% auto;
     width:80%;
     padding:20px;
-    max-width:600px;
+    max-width:200px;
     border-radius: 4px;
     text-align:center;
+}
+div#about-modal{
+    display:none;
+    position: fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0, 0, 0, 0.651)
+}
+
+div#about-modal .inner-about-modal{
+    background-color:#fefefe;
+    margin:3% auto;
+    width:80%;
+    padding:0px 20px 10px 20px;
+    max-width:400px;
+    border-radius: 4px;
+    text-align:center;
+}
+div#about-modal .inner-about-modal h3{
+    padding-top:20px;
+}
+span[role="button"]{
+    font-size:1em;
+    color:rgba(23, 18, 18, 0.762);
+    font-size:2em;
+    float:right;
+}
+
+span[role="button"]:hover{
+    cursor:pointer;
+    color:#ff6666;
 }

@@ -9,6 +9,21 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 </head>
 <body>
+    <div class="myModal" id="about-modal">
+        <div class="inner-about-modal">
+            <span id="close-about-modal" role="button">&times;</span>
+            <h3>ABOUT:</h3>
+            <h4>Step 1:</h4>
+            <p>Enter your tasks in the "To Do" side.</p>
+            <p>Press Start.</p>
+            <p>For 25 minutes, ignore all distractions and only work towards finishing your pre-decided tasks.</p>
+            <h4>Step 2:</h4>
+            <p>Break for 5 minutes, catching up on all your notifications and relax</p>
+            <h4>Step 3:</h4>
+            <p>Repeat steps 1 & 2, clicking "complete" on tasks as you finish them.</p>
+            <p>Continue until you've accumulated four pomodoro tomatoes!</p>
+        </div>
+    </div>
     <div class="myModal" id="myModal">
         <div class="modal-content">
             <p id="modal-notification"></p>
@@ -16,21 +31,34 @@
         </div>
     </div>
     <div class="container">
+        
         <section id="top">
             <div id="title">
                 <h1>POMODORO</h1>
             </div>
+            <nav>
+                    <ul>
+                        <li><a class="about-modal-button" href="#">ABOUT</a></li>
+                        <li><a href="#">SAVE</a></li>
+                    </ul>
+            </nav>
             <section id="task-tracker">
                 <h3>Completed Tasks: </h3>
                 <span id="completed-tasks"></span>
                 <span>/</span>
                 <span id="total-tasks"></span>
+                <div id="mode-display">
+                    <h3>Mode:</h3>
+                    <span id="timer-mode"></span>
+                </div>
             </section>
             <div id="timer">
                 <section id="numbers">
-                    <span id="minutes">00</span>
-                    <span id="colon">:</span>
-                    <span id="seconds">00</span>
+                    <div>
+                        <span id="minutes">00</span>
+                        <span id="colon">:</span>
+                        <span id="seconds">00</span>
+                    </div>
                 </section>
                 <button id="button" type="button">BEGIN</button>
             </div>
@@ -57,6 +85,7 @@
         </div>
     </section>
     <script src="js/tomato.js"></script>
+    <script src="js/modal.js"></script>
     <script src="js/timer.js"></script>
     <script src="js/main.js"></script>
     <footer>
