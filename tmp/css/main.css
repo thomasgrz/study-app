@@ -1,5 +1,7 @@
 /* set up body */
-body{
+html,body{
+    overflow: hidden;
+    max-width:100%;
     background-color:#333;
     font-family: 'Roboto','sans-serif';
 }
@@ -27,12 +29,12 @@ nav li{
 nav li a:link{
     text-decoration:none;
     color:white;
-    padding:inherit;
+    /* padding:inherit; */
 }
 nav li a:visited{
     color:white;
 }
-nav li a:hover{
+nav li a:hover, nav li a:focus{
     font-weight:900;
     color:#ff6666;
 }
@@ -128,7 +130,9 @@ section #numbers div{
     text-align: center;
 }
 
-
+.finished{
+    padding-top:5px;
+}
 /* both lists*/
 #lists{
     display:flex;
@@ -148,6 +152,15 @@ ul{
 
 div#todo-container input{
     margin-bottom:5px;
+    height:1em;
+
+}
+li[iscomplete=false] > button{
+    height:2em;
+    background-color:#F8F8FF;
+    color:#333;
+    border-radius:4px;
+    margin-left:30px;
 }
 /* div#todo-container button{
     display:inline;
@@ -176,13 +189,27 @@ div li[iscomplete=true] span{
 /* footer */
 
 footer{
-    position:fixed;
+    position:relative;
     left:0;
     bottom:0;
     font-size:.5em;
+    color:#F8F8FF;
+    margin-top:50px;
+    margin:auto;
+    width:600px;
+    display:block;
+    max-width:100%;
+}
+footer a:link{
+    color:#F8F8FF;
+    text-decoration:none;
+   
 }
 
 /* my modal */
+.myModal{
+    z-index:1;
+}
 div#myModal {
     display:none;
     position: fixed;
@@ -211,6 +238,7 @@ div#myModal span:hover{
     cursor:pointer;
 }
 div#about-modal{
+    z-index:1;
     display:none;
     position: fixed;
     left:0;
@@ -246,6 +274,7 @@ span[role="button"]:hover{
 
 div#save-modal{
     display:none;
+    z-index:1;
     position: fixed;
     left:0;
     top:0;
@@ -263,6 +292,47 @@ div#save-modal .inner-save-modal{
     border-radius: 4px;
     text-align:center;
 
+}
+.dropdown{
+    position: relative;
+    display:inline-block;
+}
+.dropdown-content{
+    display:none;
+    position:absolute;
+    width:120px;
+    margin-right:10px;
+    box-shadow: 2px 10px 30px 10px rgba(85, 84, 84, 0.623);
+    z-index:1;
+    border-radius:4px;
+}
+
+.dropdown-content a{
+    color:#333;
+    padding: 10px 15px;
+    text-decoration:none;
+    display:block;
+}
+
+.dropdown-content a:hover{
+    color:#ff6666;
+}
+.dropdown-content li{
+    color:#333;
+    width:100%;
+    border-radius:0px;
+    padding-right:0;
+    background-color:#fefefe;
+    padding-left:0;
+
+}
+.dropdown-content li:hover{
+    color:#ff6666;
+    cursor:pointer;
+    font-weight:900;
+}
+.show{
+    display:block;
 }
 
 @media screen and (max-width:360px){
@@ -301,4 +371,15 @@ div#save-modal .inner-save-modal{
         flex-wrap:wrap;
         width:100%;
     }
+    #task-tracker,
+    #mode-display{
+        padding-left:10px;
+    }
+    footer{
+        color:#333;
+    }
+    footer a:link{
+        color:#333;
+    }
+
 }

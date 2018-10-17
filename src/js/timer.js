@@ -1,4 +1,4 @@
-
+let INTERVAL_RATE = 1000
 //create a start stop button with a changing
 //mode attribute
 const button = document.getElementById("button")
@@ -99,7 +99,7 @@ function initiateStudy(){
         seconds.innerHTML = memory.seconds
     }
     memory.seconds--
-    },5)
+    },INTERVAL_RATE)
 } 
 
 //increase the timer every second until 5 minutes
@@ -123,7 +123,7 @@ function initiateBreak(){
             seconds.innerHTML = memory.seconds
         }
         memory.seconds--
-    },5)
+    },INTERVAL_RATE)
 } 
 
 document.addEventListener("timer_end", ()=>{
@@ -132,7 +132,7 @@ document.addEventListener("timer_end", ()=>{
     if(memory.timerType === "study"){
         modaltext.innerText = "It's time to take a break"
     }else{
-        modaltext.innerText = "It's timer to study"
+        modaltext.innerText = "It's time to study"
     }
     let modal = document.getElementById("myModal")
     modal.style.display = "block";
@@ -150,6 +150,7 @@ document.addEventListener("timer_end", ()=>{
 
     }else{
         clearInterval(fiveminutebreak)
+        round++
         memory.timerType = "break"
         memory.minutes = 5
         memory.seconds = 0
@@ -160,24 +161,79 @@ document.addEventListener("timer_end", ()=>{
         
     }
     if(round>3){
+        round = 0
+        memory.minutes = 25
+        memory.seconds = 0
+        minutes.innerHTML = memory.minutes
+        seconds.innerHTML = memory.seconds + '0'
         console.log(round)
         clearInterval(studyTimer)
-        
+        let container = document.getElementById("tomatoes")
+        container.innerHTML = `<h1 class="finished">YOU"VE FINISHED!</h1>`
     }
     memory.timerStatus = 0
     button.innerHTML = "START"
     button.setAttribute("mode","start")
 
-    
-    // if(activeTimerType ==="study"){
-    //     round++
-    //     console.log(round)
-    //     return initiateBreak()
-    // }else{
-    //     return initiateStudy()
-    // }
 })
+//bring in the options buttons for functionality
+let restart_timer_button = document.getElementById("restart-timer-button")
+let reset_session_button = document.getElementById("reset-session-button")
+//reset the entire session 
+//when the reset button is clicked 
+reset_session_button.onclick = function(event){
+    debugger;
+    if(memory.timerType === "study"){
+        clearInterval(studyTimer)
+        memory.timerStatus = 0
+        memory.minutes = 25
+        memory.seconds = 0
+        minutes.innerText = memory.minutes
+        seconds.innerText = memory.seconds + '0'
+        button.innerHTML = "START"
+        button.setAttribute("mode","start")
+    }else{
+        clearInterval(fiveminutebreak)
+        memory.timerStatus = 0
+        memory.minutes = 25
+        memory.seconds = 0
+        minutes.innerText = memory.minutes
+        seconds.innerText = memory.seconds + '0'
+        button.innerHTML = "START"
+        button.setAttribute("mode","start")
+    }
+    
+    let container = document.getElementById("tomatoes")
+    container.innerHTML = ""
 
+}
+
+//restart the current timer when 
+//restart button is clicked
+restart_timer_button.onclick = 
+function(event){
+    if(memory.timerType === "study"){
+        
+        clearInterval(studyTimer)
+        memory.timerStatus = 0
+        memory.minutes = 25
+        memory.seconds = 0
+        minutes.innerText = memory.minutes
+        seconds.innerText = memory.seconds + '0'
+        button.innerHTML = "START"
+        button.setAttribute("mode","start")
+
+    }else{
+        clearInterval(fiveminutebreak)
+        memory.timerStatus = 0
+        memory.minutes = 5
+        memory.seconds = 0
+        minutes.innerText = memory.minutes
+        seconds.innerText = memory.seconds + '0'
+        button.innerHTML = "START"
+        button.setAttribute("mode","start")
+    }
+}
 //considering making timer into a class to be substantiated 
 //whenever a timer is needed 
 //this could be handed customized length durations

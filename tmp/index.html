@@ -51,6 +51,13 @@
                     <ul>
                         <li><a class="about-modal-button" href="#">ABOUT</a></li>
                         <li><a class="save-modal-button" href="#">SAVE</a></li>
+                        <div class="dropdown">
+                            <li><a class="dropdown-button" href="#">OPTIONS</a></li>
+                            <ul id="options-menu" class="dropdown-content">
+                                <li class="option" id="restart-timer-button">Restart round</li>
+                                <li class="option" id="reset-session-button">Reset session</li>
+                            </ul>
+                        </div>
                     </ul>
             </nav>
             <section id="task-tracker">
@@ -95,11 +102,13 @@
             </div>
         </div>
     </section>
+    <script src="js/dropdown.js"></script>
     <script src="js/tomato.js"></script>
     <script src="js/modal.js"></script>
     <script src="js/timer.js"></script>
     <script src="js/main.js"></script>
     <footer>
+            <div>The Pomodoro app was designed and coded by Thomas Grzesiakowski. Find me on Github @ github.com/thomasgrz</div>
             <div>Icons made by <a href="https://www.flaticon.com/authors/prettycons" title="prettycons">prettycons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     </footer>
 </body>
