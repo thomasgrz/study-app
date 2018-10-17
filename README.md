@@ -1,4 +1,4 @@
-# StudyApp 
+# study-app 
 This app is based off a studying method known as the Pomodoro Technique. 
 See more about that studying technique and it's many benefits <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique">here</a> 
 
