@@ -1,4 +1,4 @@
-let INTERVAL_RATE = 1000
+let INTERVAL_RATE = 1
 //create a start stop button with a changing
 //mode attribute
 const button = document.getElementById("button")

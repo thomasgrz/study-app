@@ -335,7 +335,7 @@ div#save-modal .inner-save-modal{
     display:block;
 }
 
-@media screen and (max-width:360px){
+@media screen and (max-width:420px){
     html,body{
         width:100%;
         background-color:white;
