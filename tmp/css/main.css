@@ -38,6 +38,7 @@ nav li a:hover{
 }
 /* target the top pomodor app*/
 .container{
+    min-width:285px;
     max-width:600px;
     margin: auto;
     background-color:white;
@@ -162,12 +163,12 @@ div#todo-container input{
 }
 
 div li[iscomplete=true] span{
+    overflow-x:auto;
     background-color:#ff6666;
     color:white;
     padding-left:10px;
     padding-right:10px;
     border-radius:5px;
-    display:inline;
     margin:0,0,0,7px;
     list-style-type: none;
 }
@@ -178,6 +179,7 @@ footer{
     position:fixed;
     left:0;
     bottom:0;
+    font-size:.5em;
 }
 
 /* my modal */
@@ -264,11 +266,35 @@ div#save-modal .inner-save-modal{
 }
 
 @media screen and (max-width:360px){
+    html,body{
+        width:100%;
+        background-color:white;
+        padding:0;
+        margin:0;
+    }
+    .container{
+        min-width:100%;
+        background-color:#CCCCFF;
+        padding:0;
+        margin:0;
+    }
     div#mode-display{
         display:block;
         width:100%;
     }
+    section#top{
+        width:100%;
+       padding:0;
+       margin:0;
+       border-radius:0;
+       border-bottom:3px solid #333;
+    }
+    div#todo-container{
+        width:100%;
+    }
     section#lists{
+        background-color:white;
+        width:100%;
         display:flex;
         flex:1;
         flex-direction:row;

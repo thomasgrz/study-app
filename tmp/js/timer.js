@@ -30,7 +30,8 @@ let memory  = {
     timerType: "study",
     timerStatus: 0 //0 = timer off, 1 = timer on
 }
-
+minutes.innerText = memory.minutes
+seconds.innerText = memory.seconds + '0'
 //show mode in DOM
 let status = document.getElementById("timer-mode")
 status.innerText = memory.timerType.toUpperCase()
@@ -161,6 +162,7 @@ document.addEventListener("timer_end", ()=>{
     if(round>3){
         console.log(round)
         clearInterval(studyTimer)
+        
     }
     memory.timerStatus = 0
     button.innerHTML = "START"
