@@ -1,6 +1,5 @@
 /* set up body */
 html,body{
-    height:100%;
     max-width:100%;
     background-color:#333;
     font-family: 'Roboto','sans-serif';
@@ -147,7 +146,9 @@ ul{
 /* todo list */
 #todo-container{
     width:50%;
+    height:100%;
     padding-left:10px;
+    padding-bottom:10px;
 }
 
 div#todo-container input{
